@@ -1,0 +1,38 @@
+<html>
+<body>
+<div>
+
+<b>Nom:</b> <span id="FirstName"></span><br/>
+<b>Prénom:</b> <span id="LastName"></span><br/>
+<b>Tel:</b> <span id="phone"></span><br>
+<b>ville:</b> <span id="town"></span>
+</div><script>
+//modify the HTML
+
+//Create a <p> element
+var para = document.createElement("H1");
+// Create a text node
+var t = document.createTextNode("This is a paragraph");
+// Append the text to <p>
+para.appendChild(t);
+para.setAttribute("align","center");
+document.body.appendChild(para);
+if (window.XMLHttpRequest) //if browser supports XMLHttpRequest
+{// Create an instance of XMLHttpRequest object. code for IE7+, Firefox,
+Chrome, Opera, Safari
+xmlhttp = new XMLHttpRequest();
+}
+else
+{// code for IE6, IE5
+xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+// sets and sends the request for calling "node.xml"
+xmlhttp.open("GET","annuaire-v0.2.xml",async = false);
+xmlhttp.send();
+// sets and returns the content as XML DOM
+xmlDoc=xmlhttp.responseXML;
+document.getElementById("FirstName").innerHTML =
+xmlDoc.getElementsByTagName("nom")[0].childNodes[0].nodeValue;
+</script>
+</body>
+</html>
